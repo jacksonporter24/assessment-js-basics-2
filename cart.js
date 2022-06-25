@@ -35,8 +35,11 @@ const cart = [
 
 //CODE HERE
 
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
+const summedPrice = cart.reduce(function(sum, cartObj) {
+    return sum + cartObj.price
+} , 0 )
 
+console.log(summedPrice)
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -54,7 +57,12 @@ const cart = [
 */
 
 //CODE HERE
-
+function calcFinalPrice(carttotal, couponValue, tax) {
+    var cartTotalWithTax = carttotal * tax
+    var cartTotalAfterTax = cartTotalWithTax + carttotal
+    var cartFinal = cartTotalAfterTax - couponValue
+    return cartFinal
+}
 
 
 //////////////////PROBLEM 3////////////////////
@@ -78,7 +86,15 @@ const cart = [
 */
 
 /*
-    TEXT ANSWER HERE
+    Customer's name
+    customer's party size
+    Customer's arrival time
+    customer's special requests 
+
+    Customer's name will be a string. Clearly, the restaurant needs to know their name for reservation purposes. 
+    Customer's party size will be a number. Restaurant will need to know how many seats they've filled for that time. 
+    Customer's arrival time will be a string. Restaurant needs to know when to prepare to have them. 
+    Customer's special requests would be another string and are for things such as allergies. 
 
 */
 
@@ -88,3 +104,9 @@ const cart = [
 */
 
 //CODE HERE
+let CustomerPage = {
+    name: "Jackson Porter",
+    partySize: 12,
+    arrivalTime: "7:30 PM",
+    specialRequests: "gluten-free allergy" 
+}
