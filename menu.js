@@ -165,13 +165,21 @@ let foodArr = [{
 
 //CODE HERE
 
-const filteredFood = foodArr.filter((foodObj) => checkForTag(foodObj))
-function checkForTag(obj){
-    return obj.tags.includes("gluten-free")
+//this is one way
+
+// const filteredFood = foodArr.filter((foodObj) => checkForTag(foodObj))
+// function checkForTag(obj){
+//     return obj.tags.includes("gluten-free")
+// }
+
+// console.log(filteredFood)
+
+//This is another thing
+function filterByAllergy(type) {
+    const allergyFood = foodArr.filter((foodObj) => foodObj.tags.includes(type))
+    return allergyFood
 }
-
-console.log(filteredFood)
-
+console.log(filterByAllergy("cauliflower crust"))
 
 
 //////////////////PROBLEM 5////////////////////
@@ -215,6 +223,52 @@ console.log(filteredFood)
 
 //CODE HERE
 
+function filterByProperty (property, number, type) {
+    var returnArr = foodArr.filter((foodProperties) => {
+        switch (property) {
+            case "price":
+                priceProperty(foodProperties, number, type)
+            case "rating":
+                ratingProperty(foodProperties, number, type)
+            case "popularity":
+                popularityProperty(foodProperties, number, type)
+        }
+        //propertyCallback(property, foodProperties, number, type)
+    })
+    return returnArr
+}
+
+// function propertyCallback(callback = () => {}) {
+//     return callback(arguments[1], arguments[2], arguments [3]);
+// }
+  
+
+function priceProperty(foodProperties, number, type){
+    if (type === "above") {
+        return number > foodProperties.price
+    } else {
+        return number < foodProperties.price
+    }
+}
+
+function ratingProperty(foodProperties, number, type){
+    if (type === "above") {
+        return number > foodProperties.rating
+    } else {
+        return number < foodProperties.rating
+    }
+}
+
+function popularityProperty(foodProperties, number, type){
+    if (type === "above") {
+        return number > foodProperties.popularity
+    } else {
+        return number < foodProperties.popularity
+    }
+}
+
+
+
 
 /*
     Invoke the `filterByProperty` function passing
@@ -224,3 +278,11 @@ console.log(filteredFood)
 */
 
 //CODE HERE
+
+console.log(filterByProperty("price", 10, "below"))
+console.log(filterByProperty("popularity", 10, "below"))
+console.log(filterByProperty("rating", 10, "below"))
+
+console.log(filterByProperty("price", 10, "above"))
+console.log(filterByProperty("popularity", 10, "above"))
+console.log(filterByProperty("rating", 10, "above"))
