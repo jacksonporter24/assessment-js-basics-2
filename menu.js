@@ -223,15 +223,19 @@ console.log(filterByAllergy("cauliflower crust"))
 
 //CODE HERE
 
+//could not figure it out with callbacks to save my life. 
+
 function filterByProperty (property, number, type) {
     var returnArr = foodArr.filter((foodProperties) => {
         switch (property) {
             case "price":
-                priceProperty(foodProperties, number, type)
+                return priceProperty(foodProperties, number, type)
             case "rating":
-                ratingProperty(foodProperties, number, type)
+                return ratingProperty(foodProperties, number, type)
             case "popularity":
-                popularityProperty(foodProperties, number, type)
+                return popularityProperty(foodProperties, number, type)
+            default:
+                return
         }
         //propertyCallback(property, foodProperties, number, type)
     })
@@ -245,25 +249,25 @@ function filterByProperty (property, number, type) {
 
 function priceProperty(foodProperties, number, type){
     if (type === "above") {
-        return number > foodProperties.price
-    } else {
         return number < foodProperties.price
+    } else {
+        return number > foodProperties.price
     }
 }
 
 function ratingProperty(foodProperties, number, type){
     if (type === "above") {
-        return number > foodProperties.rating
-    } else {
         return number < foodProperties.rating
+    } else {
+        return number > foodProperties.rating
     }
 }
 
 function popularityProperty(foodProperties, number, type){
     if (type === "above") {
-        return number > foodProperties.popularity
-    } else {
         return number < foodProperties.popularity
+    } else {
+        return number > foodProperties.popularity
     }
 }
 
